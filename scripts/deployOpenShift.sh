@@ -236,6 +236,7 @@ if [ $AZURE == "true" ]
 then
     # Enabling static web site on the web storage account
     echo "Custom Header: Enabling a static-website in the web storage account"
+    echo "Running: az storage blob service-properties update --account-name $WEBSTORAGE --static-website"
     az storage blob service-properties update --account-name $WEBSTORAGE --static-website
 
     # Retrieving URL
