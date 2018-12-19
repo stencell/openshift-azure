@@ -235,6 +235,9 @@ runuser -l $SUDOUSER -c "ansible-playbook ~/openshift-container-platform-playboo
 IMAGECT=nope
 if [ $AZURE == "true" ]
 then
+    # Add storage-preview extension, 'cause it needs it
+    echo "Adding storage-preview extension to azure CLI"
+    az extension add --name storage-preview
     # Enabling static web site on the web storage account
     echo "Custom Header: Enabling a static-website in the web storage account"
     az storage blob service-properties update --account-name $WEBSTORAGE --static-website
