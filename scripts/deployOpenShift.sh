@@ -88,12 +88,11 @@ fi
 # Logging into Azure CLI
 if [ "$AADCLIENTID" != "" ]
 then
+    # Adding Storage Extension
+    az extension add --name storage-preview
     echo $(date) " - Logging into Azure CLI"
     az login --service-principal -u $AADCLIENTID -p $AADCLIENTSECRET -t $TENANTID
     az account set -s $SUBSCRIPTIONID
-
-    # Adding Storage Extension
-    az extension add --name storage-preview
 fi
 
 # Setting the default openshift_cloudprovider_kind if Azure enabled
@@ -235,9 +234,6 @@ runuser -l $SUDOUSER -c "ansible-playbook ~/openshift-container-platform-playboo
 IMAGECT=nope
 if [ $AZURE == "true" ]
 then
-    # Add storage-preview extension, 'cause it needs it
-    echo "Adding storage-preview extension to azure CLI"
-    az extension add --name storage-preview
     # Enabling static web site on the web storage account
     echo "Custom Header: Enabling a static-website in the web storage account"
     az storage blob service-properties update --account-name $WEBSTORAGE --static-website
