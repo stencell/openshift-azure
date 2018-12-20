@@ -8,7 +8,7 @@
 				"description": "Base URL for Template Files",
 				"artifactsBaseUrl": ""
 			},
-			"defaultValue": "https://raw.githubusercontent.com/stencell/openshift-container-platform/master"
+			"defaultValue": "https://raw.githubusercontent.com/stencell/openshift-azure/master"
 		},
 		"masterVmSize": {
 			"type": "string",
